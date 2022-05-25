@@ -1,0 +1,17 @@
+version: '2'
+services:
+  flex:
+    build: flexlm
+    # Fabrikanteak lizentzia mac zehatz batentzako egin badu
+    #mac_address: b6:aa:3c:66:f1:92
+    # Fabrikanteak lizentzia hostname zehatz batentzako egin badu
+    #hostname: pamstamp
+    environment:
+      - CERTS=/licenses/pam_lmd.lic
+    volumes:
+      - ./licenses:/licenses
+      - ./vendors:/vendors
+    ports:
+      - "7789:7789"
+      - "42630-42640:42630-42640"
+    restart: unless-stopped
